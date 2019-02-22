@@ -65,7 +65,7 @@ export class EditUserPage implements OnInit {
     await this.http.post('http://uicar.openode.io/edituser/', {
       nombre: nombre,
       uid: this.uid,
-      img: img,
+      img: url,
       ubication: zona,
       whatsapp: telefono
       }).subscribe((response) => {

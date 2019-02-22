@@ -25,7 +25,7 @@ export class MainPage implements OnInit {
   data = [];
   trayectos = [];
   numero = 2 ;
-  zona = 'zona';
+  zona = 'Madrid';
   nombre = 'Usuario';
 
   // Variables mapa
