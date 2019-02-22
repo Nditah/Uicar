@@ -29,7 +29,7 @@ You can tested in Ionic devapp
 
 - Mensaje de inicio de sesion    ✔️ 
 
-- Mensaje de error formulario de editar usuario 
+- Mensaje de error formulario de editar usuario  [ Delay ]
 
 - Editar usuario imagen    ✔️ 
 
