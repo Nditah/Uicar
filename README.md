@@ -35,6 +35,8 @@ You can tested in Ionic devapp
 
 - Mapa   ✔️ 
 
+- Build Ios 
+
 
 ## Repos :
 
