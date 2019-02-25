@@ -35,6 +35,22 @@ You can tested in Ionic devapp
 
 - Mapa   ✔️ 
 
+
+
+
+
+
+
+- Arreglar bug de inicio de sesion
+
+- Pantalla de carga
+
+- Abrir enlaces de las rutas
+
+- Ordenar los items del tablon y trayectos cercanos 
+
+- Login con google 
+
 - Build Ios 
 
 
