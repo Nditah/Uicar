@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -8,7 +8,7 @@ import { JsonPipe } from '@angular/common';
   templateUrl: './profile-page.page.html',
   styleUrls: ['./profile-page.page.scss'],
 })
-export class ProfilePagePage implements OnInit {
+export class ProfilePagePage implements AfterViewInit {
 
   profiledata = [];
   profiletrayectos = [];
@@ -16,76 +16,47 @@ export class ProfilePagePage implements OnInit {
   uid: string;
   uidprofile: string;
   userprofile: boolean;
+  perfilT: Number;
 
   // Mapa variablees
 
-  ngOnInit() {
+
+
+  constructor(private http: HttpClient
+    , private aut: AngularFireAuth, private router: Router, public active: ActivatedRoute) {
+    this.userprofile = true;
+    this.uid = localStorage.getItem('uid');
+
+    if (this.uid === undefined) {
+      this.router.navigateByUrl('login');
+    }
+
   }
 
-  constructor(  private http: HttpClient
-    , private aut: AngularFireAuth, private router: Router , public active: ActivatedRoute) {
-      this.aut.authState
-      .subscribe(
-        user => {
-          this.uid = user.uid;
-          console.log(user.uid);
-          this.checkuser(this.uid);
-        },
-        () => {
-         // this.rout.navigateByUrl('/login');
-        }
-      );
-    this.cargaruid();
-    this.profileload(this.uidprofile);
+  ngAfterViewInit() {
     setInterval(() => {
-      this.profileload(this.uidprofile);
-    }, 2000);
+      this.profileload();
+    }, 3000);
+  }
 
-    if ( this.profiledata[0] === null) {
-      console.log('Usuario vacio');
-    } else {
-      console.log(this.profiledata[0]);
-    }
-    }
+  async profileload() {
 
-   async cargaruid() {
-    await this.active.params.subscribe((data2: any) => {
-      this.uidprofile = data2.id;
-    });
-   }
-
-   async profileload(uid: string) {
-
-    await this.http.get(`http://uicar.openode.io/users/` + uid + '/info').subscribe((data: any) => {
+    await this.http.get(`http://uicar.openode.io/users/` + this.uid + '/info').subscribe((data: any) => {
+      this.perfilT = data.length;
+      this.userprofile = false;
       this.profiledata = data;
     });
 
-    await this.http.get(`http://uicar.openode.io/users/` + uid + '/trayectos').subscribe((data: any) => {
-      this.profiletrayectos = data;
+    await this.http.get(`http://uicar.openode.io/users/` + this.uid + '/trayectos').subscribe((data2: any) => {
+      this.userprofile = false;
+      this.profiletrayectos = data2;
     });
   }
-  gotomain() {
-    this.router.navigateByUrl('/');
-  }
-  gotoedit() {
-    this.router.navigateByUrl('/edituser/' + this.uid);
-  }
-  gotocreate() {
-    this.router.navigateByUrl('/create');
-  }
 
-  checkuser(uid: string) {
-    if ( uid === this.uidprofile ) {
-      console.log('Este es su perfil') ;
-      this.userprofile = true;
-    } else {
-      console.log('Este no su perfil') ;
-    }
-  }
-  gotowhatsapp( telf: string) {
+  gotowhatsapp(telf: string) {
     console.log(telf);
-    const newurl = 'https://api.whatsapp.com/send?phone=' + telf ;
-    window.open( newurl , '_system' , '_blank');
+    const newurl = 'https://api.whatsapp.com/send?phone=' + telf;
+    window.open(newurl, '_system', '_blank');
 
   }
 

@@ -25,36 +25,15 @@ You can tested in Ionic devapp
 
 - Recarga de perfil constante    ✔️ 
 
-- Whatsapp enlace que se abrá bien  ✔️ 
+- Whatsapp enlace que se abrá bien
 
-- Mensaje de inicio de sesion    ✔️ 
+- Mensaje de inicio de sesion 
 
-- Mensaje de error formulario de editar usuario  [ Delay ]
+- Mensaje de error formulario de editar usuario
 
 - Editar usuario imagen    ✔️ 
 
-- Mapa   ✔️ 
-
-
-
-<br><br>
-
-## Bugs Alpha
-
-- Arreglar bug links ( No habre el usuario dentro de la informacion del trayecto  y en la pantalla de perfil no va a tras con la fecha )
-
-- Pantalla de carga ( Quitar esos spiner y poner uno solo que ocupe toda la pantalla y que quede bien )
-
-- Perfil tiene una carga cada vez que se entra al perfil lo cual tarda mucho y hace que vaya lento todo , ya que tienes que esperar varios segundos cada vez.
-
-- Abrir enlaces de las rutas 
-
-- Ordenar los items del tablon y trayectos cercanos 
-
-- Login con google 
-
-
-## Plazo maximo para solucionar esos errores y tener apk en produccion  1 de Marzo
+- Mapa
 
 
 ## Repos :
