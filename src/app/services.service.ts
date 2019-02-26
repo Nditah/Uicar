@@ -11,16 +11,18 @@ import { auth } from 'firebase/app';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase';
 
-import { Camera, CameraOptions  } from '@ionic-native/Camera/ngx';
+import { Camera, CameraOptions } from '@ionic-native/Camera/ngx';
+
+
+declare var window;
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServicesService {
-
-   window: any;
   private CARPETA_IMAGENES = 'img';
   url: any;
+ 
 
   private galleryOptions: CameraOptions = {
     quality: 50,
@@ -46,21 +48,6 @@ export class ServicesService {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
-
-
-    this.aut.authState
-      .subscribe(
-        user => {
-          if (user) {
-            // this.rout.navigateByUrl('tabs/tab1');
-          } else {
-            this.rout.navigateByUrl('/login');
-          }
-        },
-        () => {
-          this.rout.navigateByUrl('/login');
-        }
-      );
   }
 
   cargarImagen(data) {
@@ -124,14 +111,10 @@ export class ServicesService {
         },
         () => {
           // upload success
-          alert('imagen cargada correctamente');
-
           uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
             console.log('File available at', downloadURL);
             const url = downloadURL;
-            alert(url);
             this.url = `${url}`;
-            alert(this.url);
             return this.url;
           });
         });
