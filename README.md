@@ -40,19 +40,19 @@ You can tested in Ionic devapp
 ## Bugs Alpha
 
 
- - Arreglar bug links ( No habre el usuario dentro de la informacion del trayecto  y en la pantalla de perfil no va a tras con la fecha )
+ - Arreglar bug links ( No habre el usuario dentro de la informacion del trayecto  y en la pantalla de perfil no va a tras con la fecha )    ✔️ 
 
 
- - Arreglar bug de inicio de sesion	- Pantalla de carga ( Quitar esos spiner y poner uno solo que ocupe toda la pantalla y que quede bien )
+ - Arreglar bug de inicio de sesion	- Pantalla de carga ( Quitar esos spiner y poner uno solo que ocupe toda la pantalla y que quede bien )   ✔️ 
+ 
+
+ - Pantalla de carga	- Perfil tiene una carga cada vez que se entra al perfil lo cual tarda mucho y hace que vaya lento todo , ya que tienes que esperar varios segundos cada vez.   ✔️ 
 
 
- - Pantalla de carga	- Perfil tiene una carga cada vez que se entra al perfil lo cual tarda mucho y hace que vaya lento todo , ya que tienes que esperar varios segundos cada vez.
+ - Abrir enlaces de las rutas	- Abrir enlaces de las rutas  
 
 
- - Abrir enlaces de las rutas	- Abrir enlaces de las rutas 
-
-
- - Ordenar los items del tablon y trayectos cercanos 	- Ordenar los items del tablon y trayectos cercanos 
+ - Ordenar los items del tablon y trayectos cercanos 	- Ordenar los items del tablon y trayectos cercanos [ David ]
 
 
  - Login con google 	- Login con google 
