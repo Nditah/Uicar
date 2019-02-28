@@ -67,7 +67,6 @@ You can tested in Ionic devapp
 
  ## Repos :
 
-## Repos :
 
 https://github.com/ionic-team/ionic-native-google-maps
 
