@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { AngularFireAuth } from 'angularfire2/auth';
 declare var google;
 
 @Component({
@@ -13,7 +14,7 @@ export class InfoTrayectoPage implements OnInit {
 
   id: string;
   zona: string;
-
+  uid: any;
   trayectodata = [];
 
 
@@ -21,7 +22,6 @@ export class InfoTrayectoPage implements OnInit {
   flightPath: any;
   map: any;
   marker: any;
-  image = '../../assets/icons/marker.png';
   directionsDisplay: any;
 
   lat: number;
@@ -30,51 +30,63 @@ export class InfoTrayectoPage implements OnInit {
 
   directionsService = new google.maps.DirectionsService();
 
-  constructor(public rout: Router, public active: ActivatedRoute, private http: HttpClient,
-    private geolocation: Geolocation) {
-    this.cargarvariables();
+  constructor(public router: Router, public active: ActivatedRoute, private http: HttpClient,
+    private geolocation: Geolocation, private aut: AngularFireAuth) {
+
+    this.logueado();
+    this.id = this.active.snapshot.paramMap.get('id');
+
     setTimeout(() => {
       this.rutas();
     }, 2000);
+
+
     this.trayectoload(this.id);
-    console.log(this.active.snapshot.paramMap.get('id'));
+
   }
 
   ngOnInit() {
     this.geolocation.getCurrentPosition().then((resp) => {
       this.lat = resp.coords.latitude;
       this.lng = resp.coords.longitude;
-      console.log('thus cordenadas', this.lng, this.lat);
+      console.log('tus cordenadas', this.lng, this.lat);
     }).catch((error) => {
       console.log('Error getting location', error);
     });
   }
 
-  return() {
-    this.rout.navigateByUrl('/');
+  logueado() {
+    this.aut.authState
+      .subscribe(
+        user => {
+          if (user) {
+            this.uid = user.uid;
+          } else {
+            this.router.navigate([`/login`]);
+          }
+        }
+      );
   }
 
-  async cargarvariables() {
-    await this.active.params.subscribe((data2: any) => {
-      this.id = data2.id;
-    });
-    console.log(this.id);
+  return() {
+    this.router.navigate(['home']);
+  }
+
+  gotoprofile(id: string) {
+    this.router.navigate([`/profile/${id}`]);
   }
 
 
   rutas() {
     this.directionsDisplay = new google.maps.DirectionsRenderer();
     this.map = new google.maps.Map(document.getElementById('map2'), {
-      zoom: 4,
+      zoom: 11,
       center: { lat: this.lat, lng: this.lng },
       mapTypeId: 'terrain'
     });
     this.directionsDisplay.setMap(this.map);
 
-    console.log(this.id);
-
     this.http.get(`http://uicar.openode.io/trayectos/${this.id}`).subscribe((data: any) => {
-      console.log(data);
       for (let i = 0; i < data.length; i++) {
         this.directionsService.route({
           origin: data[i].inicio,
@@ -96,6 +108,7 @@ export class InfoTrayectoPage implements OnInit {
       }
     });
   }
+
   async trayectoload(id: string) {
 
     await this.http.get(`http://uicar.openode.io/trayectos/` + id).subscribe((data: any) => {
