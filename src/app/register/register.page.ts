@@ -24,13 +24,10 @@ export class RegisterPage {
 
     if (password !== cpassword) {
       this.errorpassIguales();
-      this.rout.navigateByUrl('/register');
+      this.rout.navigate(['/register']);
     } else {
       try {
         const res = this.afr.auth.createUserWithEmailAndPassword(email, password);
-        this.presentAlert(email);
-        console.log(res);
-        this.rout.navigateByUrl('/');
       } catch (error) {
         console.log(error);
       }
@@ -41,9 +38,8 @@ export class RegisterPage {
 
     try {
       const res = await this.afr.auth.signInWithPopup(new auth.GoogleAuthProvider());
-      this.presentAlert(this.email);
       console.log(res);
-      this.rout.navigateByUrl('/');
+      this.rout.navigate(['/home']);
     } catch (error) {
       console.log(error);
     }
@@ -51,17 +47,7 @@ export class RegisterPage {
 
   }
   goLogin() {
-    this.rout.navigateByUrl('/login');
-  }
-
-  async presentAlert(username) {
-    const alert = await this.alertController.create({
-      header: 'Registrado como: ',
-      message: `${username}`,
-      buttons: ['OK']
-    });
-
-    await alert.present();
+    this.rout.navigate(['/login']);
   }
 
   async errorpassIguales() {
