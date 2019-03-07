@@ -58,7 +58,7 @@ You can tested in Ionic devapp
  - Login con google 	- Login con google 
 
 
- - Build Ios 	
+ - Build Ios 	  ✔️ 
  
  ## Plazo maximo para solucionar esos errores y tener apk en produccion  1 de Marzo
 
@@ -81,4 +81,7 @@ https://github.com/apache/cordova-plugin-splashscreen
 
 ## Politica y privacidad 
 
+
 https://uicar.io/terms.pdf
+
+
