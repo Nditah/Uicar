@@ -1,4 +1,4 @@
-# Uicar.iuoi
+# Uicar
 
 Un aplicacion para compartir coche en trayectos cortos y cotidianos, encuentra trayectos hacia tu direccion, conoce gente con la que compartir coche, desarrollada por David Barrero y Ydelmaro 
 
@@ -21,7 +21,7 @@ You can tested in Ionic devapp
 
 <img src="https://github.com/davidbarrero38/Uicar/blob/master/src/assets/icons/canvas2.png?raw=true">
 
-## TODO :
+## TODO:
 
 - Recarga de perfil constante    ✔️ 
 
