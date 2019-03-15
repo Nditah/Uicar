@@ -35,8 +35,7 @@ You can tested in Ionic devapp
 
 - Mapa  ✔️ 
 
-- Enlaces en las rutas 
-
+- Enlaces en las rutas   ✔️ 
 
 ## Repos :
 
